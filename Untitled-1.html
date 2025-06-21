@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido Especial para Ana Julia</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+        }
+        .section {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        /* Espaço Sideral */
+        #space {
+            background: black;
+            color: white;
+            position: relative;
+        }
+        .earth {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #00f, #003);
+            margin-top: 20px;
+            animation: spin 10s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .scroll-down {
+            margin-top: 30px;
+            animation: bounce 1s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+        /* Transição de fundo - gradiente com rolagem */
+        body {
+            background: linear-gradient(black, #ffe6f0);
+            background-attachment: fixed;
+        }
+        /* Foguete */
+        .rocket {
+            font-size: 40px;
+            position: fixed;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: top 0.5s ease-out;
+        }
+        /* Cartinha de amor */
+        .love-letter {
+            background: white;
+            color: #e60073;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            max-width: 600px;
+            margin: 30px auto;
+        }
+        button {
+            background-color: #e60073;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            margin: 10px;
+            font-size: 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        button:hover {
+            transform: scale(1.05);
+        }
+        #resposta {
+            font-size: 20px;
+            margin-top: 20px;
+            color: #d1005d;
+        }
+    </style>
+</head>
+<body onscroll="moveRocket()">
+
+    <!-- Espaço / Introdução -->
+    <section id="space" class="section">
+        <h1>Seu sorriso faz o meu mundo girar, Ana Julia 🌎✨</h1>
+        <div class="earth"></div>
+        <p class="scroll-down">⬇️ Deslize para baixo ⬇️</p>
+    </section>
+
+    <!-- Foguete que desce com o scroll -->
+    <div id="rocket" class="rocket">🚀</div>
+
+    <!-- Cartinha de Amor -->
+    <section id="love" class="section">
+        <div class="love-letter">
+            <p>Te encontrei sem querer,<br>
+            mas quis ficar de propósito...<br>
+            Cada sorriso seu virou meu motivo, meu foco.</p>
+
+            <p>Entre olhares e conversas,<br>
+            você foi se tornando abrigo,<br>
+            E agora, com o coração na mão,<br>
+            eu te faço esse pedido:</p>
+
+            <h2>Quer dividir os dias comigo?<br>
+            As risadas, os planos, o frio na barriga...<br>
+            Quer ser meu par, meu abraço, meu riso?<br>
+            <strong>Quer namorar comigo?</strong></h2>
+
+            <button onclick="responder('sim')">Sim! ❤</button>
+            <button onclick="responder('nao')">Não 😢</button>
+
+            <p id="resposta"></p>
+        </div>
+    </section>
+
+    <script>
+        function moveRocket() {
+            const scrollY = window.scrollY;
+            const rocket = document.getElementById('rocket');
+            rocket.style.top = 20 + scrollY * 0.3 + '%';
+        }
+
+        function responder(resposta) {
+            let msg = "";
+            if (resposta === "sim") {
+                msg = "🥳 Que felicidade, Ana Julia! Agora somos oficialmente namorados! ❤";
+            } else {
+                msg = "😢 Tudo bem... mas meu carinho por você continua enorme.";
+            }
+            document.getElementById('resposta').innerHTML = msg;
+        }
+    </script>
+
+</body>
+</html>
